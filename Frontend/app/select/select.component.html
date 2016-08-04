@@ -1,3 +1,6 @@
-<p>
-    select works!
-</p>
+﻿<select id="Select1" [(ngModel)]="selectedId" (ngModelChange)="doselect()">
+    <option value="all">全部菜單</option>
+    <option *ngFor="let food of aryFood" value="{{food.Id}}">{{food.Name}}</option>
+</select>
+
+{{selectedId}}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { CommonService } from '../common.service';
 
 @Component({
   moduleId: module.id,
@@ -8,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectComponent implements OnInit {
 
-  constructor() {}
+    selectedId: number = 1;
+
+    @Output()
+    ESelected = new EventEmitter<string>();  //µù¥U¨Æ¥ó
+
+    constructor(private common: CommonService) {
+        //this.doselect();
+        //this.common.selectedId = this.selectedId;
+        }
 
   ngOnInit() {
+      this.getAllFood();
+  }
+
+  aryFood: any[];
+  getAllFood() {
+      this.common.getFood()
+          .subscribe((value: any) => {
+              this.aryFood = value;
+          })
+  }
+
+  doselect() {
+      //this.common.selectedId = this.selectedId;
+      this.ESelected.emit(this.selectedId.toString());
   }
 
 }

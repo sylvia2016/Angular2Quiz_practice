@@ -10,14 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var index_1 = require('./select/index');
+var index_2 = require('./list/index');
 var AppComponent = (function () {
     function AppComponent() {
     }
+    AppComponent.prototype.doSelected = function ($event) {
+        this.selectedId = $event;
+        console.log('app - ' + this.selectedId);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>My First Angular 2 App</h1><app-select></app-select>',
-            directives: [index_1.SelectComponent]
+            template: "<h1>My First Angular 2 App</h1>\n               <app-select (ESelected) = \"doSelected($event)\"></app-select>\n               <app-list [selectedId]=\"selectedId\"></app-list>",
+            directives: [index_1.SelectComponent, index_2.ListComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

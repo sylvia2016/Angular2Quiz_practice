@@ -91,8 +91,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\list\sample.component.css" />
-    <Content Include="app\list\sample.component.html" />
+    <Content Include="app\list\list.component.css" />
+    <Content Include="app\list\list.component.html" />
     <Content Include="app\select\select.component.css" />
     <Content Include="app\select\select.component.html" />
     <Content Include="app\sample\sample.component.css" />
@@ -138,9 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\common.service.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\list\index.ts" />
-    <TypeScriptCompile Include="app\list\sample.component.ts" />
+    <TypeScriptCompile Include="app\list\list.component.ts" />
     <TypeScriptCompile Include="app\select\index.ts" />
     <TypeScriptCompile Include="app\select\select.component.ts" />
     <TypeScriptCompile Include="app\sample\index.ts" />

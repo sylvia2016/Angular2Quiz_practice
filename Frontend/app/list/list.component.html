@@ -1,0 +1,45 @@
+﻿<br />
+///////
+<br />
+<br />
+{{selectedId}}
+<br />
+<br />
+///////
+<br />
+<br />
+<table border="1" style="width:800px" class="table">
+    <tr>
+        <td><label>Id</label></td>
+        <td><label>菜單</label></td>
+        <td><label>價錢</label></td>
+        <td><label>操作</label></td>
+    </tr>
+    <tr *ngFor="let food of aryFoodById">
+        <template [ngIf]="food.Id <= 6">
+            <td>{{food.Id}}</td>
+            <td>{{food.Name}}</td>
+            <td>{{food.Price}}</td>
+            <td></td>
+        </template>
+        <template [ngIf]="food.Id > 6">
+            <td><input id="Text1" type="hidden" value="{{food.Id}}" #updateId />{{food.Id}}</td>
+            <td>
+                <div [hidden]="modifyID==food.Id"><input id="Text2" type="hidden" value="{{food.Name}}" />{{food.Name}}</div>
+                <div [hidden]="!(modifyID==food.Id)"><input id="Text3" type="text" value="{{food.Name}}" #updateName /></div>
+            </td>
+            <td>
+                <div [hidden]="modifyID==food.Id"><input id="Text5" type="hidden" value="{{food.Price}}" />{{food.Price}}</div>
+                <div [hidden]="!(modifyID==food.Id)"><input id="Text4" type="text" value="{{food.Price}}" #updatePrice /></div>
+            </td>
+            <td>                
+                <input *ngIf="(modifyID==food.Id )" id="Submit2" type="submit" value="確認" (click)="updateFood(updateId.value, updateName.value, updatePrice.value)" class="btn btn-primary" />
+                <input *ngIf="(modifyID==food.Id )" id="Submit3" type="submit" value="關閉" class="btn btn-primary" />
+                <input id="btn" *ngIf="!(modifyID==food.Id)" type="submit" value="修改" (click)="wantModify(food.Id)" class="btn btn-primary" />
+            </td>
+            <!--<td><input id="btn" type="submit" value="修改" (click)="wantModify(updateId.value)" *ngIf="!checkedit(updateId.value)" class="btn btn-primary" /></td>-->
+            <!--<td><input id="Submit3" type="submit" value="刪除" (click)="deleteFood(updateId.value, updateName.value)" class="btn btn-primary" /></td>-->
+
+        </template>
+    </tr>
+</table>
